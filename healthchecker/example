@@ -1,0 +1,174 @@
+# 🐧 Linux System Health Checker
+
+## Project Description
+
+This project is a Bash script designed to collect important information about a Linux Mint computer and perform basic system health checks.
+
+The script checks:
+
+* Hostname
+* Current user
+* Linux distribution
+* Kernel version
+* System uptime
+* CPU information
+* Memory usage
+* Disk usage
+* IP address
+* Internet connectivity
+* Available system updates
+
+## Script
+
+```bash
+#!/bin/bash
+
+echo "======================================"
+echo "       LINUX SYSTEM HEALTH CHECK"
+echo "======================================"
+
+echo ""
+echo "SYSTEM INFORMATION"
+echo "--------------------------------------"
+
+echo "Hostname: $(hostname)"
+echo "User: $USER"
+echo "Kernel: $(uname -r)"
+
+if command -v lsb_release >/dev/null 2>&1; then
+    echo "Distribution: $(lsb_release -ds)"
+fi
+
+echo "Uptime: $(uptime -p)"
+
+echo ""
+echo "CPU INFORMATION"
+echo "--------------------------------------"
+echo "CPU: $(lscpu | grep 'Model name' | head -1 | cut -d ':' -f2 | xargs)"
+echo "CPU Cores: $(nproc)"
+
+echo ""
+echo "MEMORY USAGE"
+echo "--------------------------------------"
+free -h
+
+echo ""
+echo "DISK USAGE"
+echo "--------------------------------------"
+df -h /
+
+echo ""
+echo "NETWORK INFORMATION"
+echo "--------------------------------------"
+
+IP_ADDRESS=$(hostname -I | awk '{print $1}')
+
+echo "IP Address: $IP_ADDRESS"
+
+echo ""
+echo "INTERNET CONNECTIVITY"
+echo "--------------------------------------"
+
+if ping -c 1 -W 2 google.com > /dev/null 2>&1; then
+    echo "Internet: CONNECTED"
+else
+    echo "Internet: NOT CONNECTED"
+fi
+
+echo ""
+echo "SYSTEM UPDATES"
+echo "--------------------------------------"
+
+sudo apt update -qq
+
+UPDATES=$(apt list --upgradable 2>/dev/null | grep -c upgradable)
+
+echo "Available Updates: $UPDATES"
+
+echo ""
+echo "======================================"
+echo "          HEALTH CHECK COMPLETE"
+echo "======================================"
+```
+
+## How to Run
+
+Give the script permission to execute:
+
+```bash
+chmod +x system-health-check.sh
+```
+
+Run the script:
+
+```bash
+./system-health-check.sh
+```
+
+## Skills Demonstrated
+
+This project demonstrates:
+
+* Bash scripting
+* Linux command-line usage
+* System monitoring
+* Hardware information gathering
+* Memory and disk monitoring
+* Network troubleshooting
+* Package management
+* Linux permissions
+* Basic automation
+
+## Future Improvements
+
+Possible upgrades include:
+
+* Add CPU temperature monitoring
+* Check disk health
+* Check running services
+* Check firewall status
+* Save results to a log file
+* Generate a system report
+* Add warning messages when resources are low
+* Create a menu-driven interface
+* Schedule automatic health checks with `cron`
+
+## Example
+
+```text
+======================================
+       LINUX SYSTEM HEALTH CHECK
+======================================
+
+SYSTEM INFORMATION
+--------------------------------------
+Hostname: linuxmint-pc
+User: user
+Kernel: 6.x.x
+Distribution: Linux Mint
+Uptime: up 2 hours
+
+MEMORY USAGE
+--------------------------------------
+Mem: 15Gi  6Gi  4Gi
+
+DISK USAGE
+--------------------------------------
+/dev/sda1   500G   120G   380G
+
+NETWORK INFORMATION
+--------------------------------------
+IP Address: 192.168.1.25
+
+INTERNET CONNECTIVITY
+--------------------------------------
+Internet: CONNECTED
+
+SYSTEM UPDATES
+--------------------------------------
+Available Updates: 4
+
+======================================
+          HEALTH CHECK COMPLETE
+======================================
+```
