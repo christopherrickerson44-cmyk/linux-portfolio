@@ -1,0 +1,492 @@
+# 🐧 Linux Mint Command Reference
+
+A collection of Linux commands I am learning and practicing while using Linux Mint.
+
+---
+
+## 📁 1. File & Directory Commands
+
+### `pwd`
+
+Shows your current directory.
+
+```bash
+pwd
+```
+
+### `ls`
+
+Lists files and folders.
+
+```bash
+ls
+ls -la
+ls -lh
+```
+
+### `cd`
+
+Changes directories.
+
+```bash
+cd Documents
+cd ..
+cd ~
+```
+
+### `mkdir`
+
+Creates a new directory.
+
+```bash
+mkdir projects
+```
+
+### `touch`
+
+Creates a new file.
+
+```bash
+touch notes.txt
+```
+
+### `cp`
+
+Copies files or directories.
+
+```bash
+cp notes.txt backup.txt
+```
+
+### `mv`
+
+Moves or renames a file.
+
+```bash
+mv notes.txt linux-notes.txt
+```
+
+### `rm`
+
+Removes a file.
+
+```bash
+rm notes.txt
+```
+
+> ⚠️ Be careful with `rm`. Deleted files may not be recoverable.
+
+---
+
+# 📄 2. Viewing Files
+
+### `cat`
+
+Displays the contents of a file.
+
+```bash
+cat linux-notes.txt
+```
+
+### `less`
+
+Views a file one screen at a time.
+
+```bash
+less linux-notes.txt
+```
+
+### `head`
+
+Shows the beginning of a file.
+
+```bash
+head linux-notes.txt
+```
+
+### `tail`
+
+Shows the end of a file.
+
+```bash
+tail linux-notes.txt
+```
+
+---
+
+# 🔎 3. Searching
+
+### `grep`
+
+Searches for text inside files.
+
+```bash
+grep "Linux" linux-notes.txt
+```
+
+### `find`
+
+Searches for files and directories.
+
+```bash
+find . -name "*.txt"
+```
+
+### `which`
+
+Shows where a command is located.
+
+```bash
+which bash
+```
+
+---
+
+# 🔐 4. Permissions
+
+### `ls -l`
+
+Displays file permissions.
+
+```bash
+ls -l
+```
+
+### `chmod`
+
+Changes file permissions.
+
+```bash
+chmod +x script.sh
+```
+
+### `chown`
+
+Changes file ownership.
+
+```bash
+sudo chown $USER:$USER file.txt
+```
+
+---
+
+# 👤 5. User Commands
+
+### `whoami`
+
+Shows the current user.
+
+```bash
+whoami
+```
+
+### `id`
+
+Displays user and group information.
+
+```bash
+id
+```
+
+### `groups`
+
+Shows the groups your user belongs to.
+
+```bash
+groups
+```
+
+### `sudo`
+
+Runs a command with administrator privileges.
+
+```bash
+sudo apt update
+```
+
+---
+
+# 💻 6. System Information
+
+### `uname`
+
+Displays kernel information.
+
+```bash
+uname -a
+```
+
+### `hostname`
+
+Displays the computer's hostname.
+
+```bash
+hostname
+```
+
+### `uptime`
+
+Shows how long the system has been running.
+
+```bash
+uptime
+```
+
+### `free`
+
+Displays memory usage.
+
+```bash
+free -h
+```
+
+### `df`
+
+Displays disk space.
+
+```bash
+df -h
+```
+
+### `du`
+
+Shows how much space files and directories use.
+
+```bash
+du -sh Documents
+```
+
+---
+
+# 🌐 7. Networking Commands
+
+### `ip addr`
+
+Displays network interfaces and IP addresses.
+
+```bash
+ip addr
+```
+
+### `ip route`
+
+Displays the routing table.
+
+```bash
+ip route
+```
+
+### `ping`
+
+Tests network connectivity.
+
+```bash
+ping google.com
+```
+
+### `ss`
+
+Displays network connections and listening ports.
+
+```bash
+ss -tuln
+```
+
+### `hostname -I`
+
+Displays the system's IP address.
+
+```bash
+hostname -I
+```
+
+---
+
+# 📦 8. Package Management
+
+Linux Mint uses APT for package management.
+
+### Update package information
+
+```bash
+sudo apt update
+```
+
+### Upgrade installed packages
+
+```bash
+sudo apt upgrade
+```
+
+### Install a package
+
+```bash
+sudo apt install package-name
+```
+
+### Remove a package
+
+```bash
+sudo apt remove package-name
+```
+
+### Search for a package
+
+```bash
+apt search package-name
+```
+
+### Show installed packages
+
+```bash
+apt list --installed
+```
+
+---
+
+# ⚙️ 9. Process Management
+
+### `ps`
+
+Displays running processes.
+
+```bash
+ps aux
+```
+
+### `top`
+
+Provides a live view of running processes.
+
+```bash
+top
+```
+
+### `kill`
+
+Stops a process using its process ID.
+
+```bash
+kill PID
+```
+
+### `pkill`
+
+Stops processes by name.
+
+```bash
+pkill process-name
+```
+
+---
+
+# 📝 10. Useful Commands
+
+### `clear`
+
+Clears the terminal.
+
+```bash
+clear
+```
+
+### `history`
+
+Displays previously used commands.
+
+```bash
+history
+```
+
+### `man`
+
+Displays the manual for a command.
+
+```bash
+man ls
+```
+
+### `echo`
+
+Prints text to the terminal.
+
+```bash
+echo "Hello Linux"
+```
+
+### `date`
+
+Displays the current date and time.
+
+```bash
+date
+```
+
+---
+
+# 🧪 Practice Lab
+
+Use these commands to practice basic Linux administration.
+
+```bash
+mkdir linux-lab
+cd linux-lab
+touch test.txt
+echo "Linux Mint Practice" > test.txt
+cat test.txt
+cp test.txt backup.txt
+ls -la
+```
+
+Search for the word `Linux`:
+
+```bash
+grep "Linux" test.txt
+```
+
+Check your system:
+
+```bash
+whoami
+hostname
+uname -a
+free -h
+df -h
+```
+
+Check your network:
+
+```bash
+ip addr
+ip route
+ping -c 4 google.com
+```
+
+---
+
+# 🎯 Skills Practiced
+
+* File management
+* Directory navigation
+* File permissions
+* User management
+* System administration
+* Package management
+* Process management
+* Network troubleshooting
+* Searching and filtering
+* Linux command-line administration
+
+---
+
+## 📚 Goal
+
+Continue expanding this command reference as I learn Linux Mint.
+
+Each new command should include:
+
+1. Command name
+2. What the command does
+3. Example syntax
+4. A real-world use case
+5. Any important warnings
